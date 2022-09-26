@@ -3,15 +3,6 @@ version: 2.1
 orbs:
   win: circleci/windows@2.4.1
 
-workflows:
-  hello-world:
-    jobs:
-      - build
-  # integration-tests:
-  #   jobs:
-  #     - browser-tests
-  #     - ui-tests
-
 jobs:
   build:
     executor:
@@ -77,4 +68,12 @@ jobs:
           command: |
               cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\common7\ide\extensions\TestPlatform"
               .\vstest.console.exe C:\Users\circleci\project\NotepadTest\bin\debug\NotepadTest.dll
- 
+
+workflows:
+  hello-world:
+    jobs:
+      - build
+  integration-tests:
+    jobs:
+      - browser-tests
+      - ui-tests
