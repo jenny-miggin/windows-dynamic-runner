@@ -1,2 +1,2 @@
-NotepadTest.*
-WebBrowser*
+NotepadTest
+WebBrowserTestsSample
