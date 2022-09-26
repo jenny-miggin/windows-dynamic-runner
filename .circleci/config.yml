@@ -2,9 +2,17 @@ version: 2.1
 
 orbs:
   win: circleci/windows@2.4.1
+  path-filtering: circleci/path-filtering@0.1.3
+
+setup: true
+
+parameters:
+  base-revision:
+    type: string
+    default: "main"
 
 jobs:
-  build:
+  build-shared:
     executor:
       name: win/default
     working_directory: C:\Users\circleci\project\HelloWorld
@@ -32,48 +40,13 @@ jobs:
           path: .\bin\Release\netcoreapp2.1\win10-x64\publish\circleci-demo-windows.exe
 
 
-  browser-tests:
-    executor:
-      name: win/default
-    steps:
-      - checkout
-      - run:
-          name: Run browser tests
-          command: |
-              cd WebBrowserTestsSample/tests/WebBrowserTests
-              dotnet test
-
-  ui-tests:
-    executor:
-      name: win/default
-      shell: powershell.exe
-    steps:
-      - checkout
-      - run: choco install winappdriver
-      - run: 
-          name: Run winappdriver in background
-          background: true
-          command: | 
-              cd "C:\Program Files (x86)\Windows Application Driver\"
-              Start-Process -FilePath "WinAppDriver.exe" -Wait
-      - run:
-          name: Restore and build
-          command: |
-            cd NotepadTest
-            nuget restore
-            cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\msbuild\current\bin\"
-            .\msbuild.exe "C:\Users\circleci\project\NotepadTest\NotepadTest.csproj"
-      - run: 
-          name: Run UI tests
-          command: |
-              cd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\common7\ide\extensions\TestPlatform"
-              .\vstest.console.exe C:\Users\circleci\project\NotepadTest\bin\debug\NotepadTest.dll
-
 workflows:
-  hello-world:
+  main-workflow:
     jobs:
-      - build
-  integration-tests:
-    jobs:
-      - browser-tests
-      - ui-tests
+      - build-shared
+      - path-filtering/filter:
+          mapping: |
+            NotepadTest.* notepadtest true
+            WebBrowserTestsSample webbrowser true
+          # # Optional, defaults to main:
+          base-revision: << pipeline.parameters.base-revision >>
