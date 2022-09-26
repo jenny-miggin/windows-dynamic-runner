@@ -12,5 +12,3 @@ This test project highlights some common interactions below that can be put toge
 - Sending keyboard input to a text box
 - Sending keyboard shortcut
 - Using secondary session
-
-This is a test
