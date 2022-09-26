@@ -55,4 +55,4 @@ workflows:
       #     config-list-file: .circleci/modular-config-list-main.txt
       - config-splitting/run-modular-configs-selectively:
           config-list-file: .circleci/selected-configs.txt
-          module-list-file: .circleci/module-file-list.txt
+          module-list-file: .circleci/module-list-file.txt
