@@ -43,7 +43,7 @@ jobs:
 workflows:
   main-workflow:
     jobs:
-      - build-shared
+    #  - build-shared
       - path-filtering/filter:
           mapping: |
             NotepadTest.* notepadtest true
