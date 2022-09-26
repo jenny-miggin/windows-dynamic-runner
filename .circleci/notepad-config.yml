@@ -4,25 +4,11 @@ orbs:
   win: circleci/windows@2.4.1
 
 parameters:
-  webbrowser:
-    type: boolean
-    default: false
   notepadtest:
     type: boolean
     default: false
 
 jobs:
-  browser-tests:
-    executor:
-      name: win/default
-    steps:
-      - checkout
-      - run:
-          name: Run browser tests
-          command: |
-              cd WebBrowserTestsSample/tests/WebBrowserTests
-              dotnet test
-
   notepad-tests:
     executor:
       name: win/default
@@ -50,12 +36,6 @@ jobs:
               .\vstest.console.exe C:\Users\circleci\project\NotepadTest\bin\debug\NotepadTest.dll
 
 workflows:
-  browser-tests:
-    when: << pipeline.parameters.webbrowser >>
-    jobs:
-      - browser-tests
-
   notepad-tests:
-    when: << pipeline.parameters.notepadtest >>
     jobs:
       - notepad-tests

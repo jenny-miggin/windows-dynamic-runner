@@ -1,0 +1,26 @@
+version: 2.1
+
+orbs:
+  win: circleci/windows@2.4.1
+
+parameters:
+  webbrowser:
+    type: boolean
+    default: false
+
+jobs:
+  browser-tests:
+    executor:
+      name: win/default
+    steps:
+      - checkout
+      - run:
+          name: Run browser tests
+          command: |
+              cd WebBrowserTestsSample/tests/WebBrowserTests
+              dotnet test
+
+workflows:
+  browser-tests:
+    jobs:
+      - browser-tests
