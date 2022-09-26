@@ -51,5 +51,8 @@ workflows:
       #       WebBrowserTestsSample webbrowser true
       #     # # Optional, defaults to main:
       #     base-revision: << pipeline.parameters.base-revision >>
-      - config-splitting/run-all-modular-configs:
-          config-list-file: .circleci/modular-config-list-main.txt
+      # - config-splitting/run-all-modular-configs:
+      #     config-list-file: .circleci/modular-config-list-main.txt
+      - config-splitting/run-modular-configs-selectively:
+          config-list-file: .circleci/selected-configs.txt
+          module-list-file: .circleci/module-file-list.txt
