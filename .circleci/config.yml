@@ -44,15 +44,7 @@ jobs:
 workflows:
   main-workflow:
     jobs:
-    #  - build-shared
-      # - path-filtering/filter:
-      #     mapping: |
-      #       NotepadTest.* notepadtest true
-      #       WebBrowserTestsSample webbrowser true
-      #     # # Optional, defaults to main:
-      #     base-revision: << pipeline.parameters.base-revision >>
-      # - config-splitting/run-all-modular-configs:
-      #     config-list-file: .circleci/modular-config-list-main.txt
+      - build-shared
       - config-splitting/run-modular-configs-selectively:
-          module-list-file: .circleci/module-list-file.txt
+          module-list-file: .circleci/list-of-dirs-to-monitor.txt
           base-revision: main

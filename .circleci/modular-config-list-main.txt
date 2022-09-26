@@ -1,2 +1,0 @@
-.circleci/notepad-config.yml
-.circleci/webbrowser-config.yml
