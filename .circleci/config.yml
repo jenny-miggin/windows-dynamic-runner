@@ -44,6 +44,6 @@ jobs:
 workflows:
   main-workflow:
     jobs:
-      - build-shared
+      - build-shared # this job runs regardless of other workflows/conditions/config files
       - config-splitting/run-all-modular-configs:
           config-list-file: .circleci/modular-config-list-main.txt
