@@ -1,8 +1,8 @@
 version: 2.1
 
 orbs:
-  win: circleci/windows@2.4.1
-  config-splitting: circle-makotom-orbs/config-splitting@0.0.1
+  win: circleci/windows@5.0.0
+  config-splitting: circle-makotom-orbs/config-splitting@0.0.8
 
 setup: true
 
@@ -49,3 +49,5 @@ workflows:
           base-revision: main
           requires:
             - build-shared
+
+# VS Code Extension Version: 1.1.1
