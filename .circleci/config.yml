@@ -9,7 +9,7 @@ setup: true
 parameters:
   base-revision:
     type: string
-    default: "selectively-merge-configs"
+    default: "main"
 
 jobs:
   build-shared:
