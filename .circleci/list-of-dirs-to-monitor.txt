@@ -1,2 +1,2 @@
-NotepadTest
 WebBrowserTestsSample
+NotepadTest
