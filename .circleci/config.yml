@@ -46,7 +46,7 @@ workflows:
      # - build-shared # this job will always run
       - config-splitting/run-modular-configs-selectively:
           module-list-file: .circleci/list-of-dirs-to-monitor.txt
-          base-revision: main
+          base-revision: << pipeline.parameters.base-revision >>
           # requires:
           #   - build-shared
 
