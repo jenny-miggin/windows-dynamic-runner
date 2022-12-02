@@ -10,7 +10,7 @@ jobs:
     
 
 workflows:
-  notepad-test-workflow:
+  library1-workflow:
     jobs:
       - build-library1
 
