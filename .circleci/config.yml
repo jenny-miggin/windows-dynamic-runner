@@ -9,7 +9,7 @@ setup: true
 parameters:
   base-revision:
     type: string
-    default: "main"
+    default: "selectively-merge-configs"
 
 jobs:
   build-shared:
@@ -43,7 +43,7 @@ jobs:
 workflows:
   main-workflow:
     jobs:
-      - build-shared # this job will always run
+     # - build-shared # this job will always run
       - config-splitting/run-modular-configs-selectively:
           module-list-file: .circleci/list-of-dirs-to-monitor.txt
           base-revision: main
