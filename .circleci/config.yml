@@ -47,7 +47,7 @@ workflows:
       - config-splitting/run-modular-configs-selectively:
           module-list-file: .circleci/list-of-dirs-to-monitor.txt
           base-revision: main
-          requires:
-            - build-shared
+          # requires:
+          #   - build-shared
 
 # VS Code Extension Version: 1.1.1
